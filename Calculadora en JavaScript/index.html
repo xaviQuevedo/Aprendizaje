@@ -13,6 +13,7 @@
           <div class="title">Calculadora</div>
           <div class="hint" aria-hidden="true">Soporta teclado</div>
         </div>
+        </div>
 
         <div class="screen" aria-live="polite" aria-atomic="true">
           <div class="expr" id="expr"></div>
@@ -23,21 +24,18 @@
           <button
             class="key util"
             data-action="all-clear"
-            aria-label="Borrar todo"
           >
             AC
           </button>
           <button
             class="key util"
             data-action="clear-entry"
-            aria-label="Borrar último"
           >
             C
           </button>
           <button
             class="key util"
-            data-action="all-clear"
-            aria-label="Cambiar signo"
+            data-action="toggle-sign"
           >
             ±
           </button>
