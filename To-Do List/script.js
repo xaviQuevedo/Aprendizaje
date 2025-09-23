@@ -66,14 +66,15 @@
     if (delBtn) {
       const id = delBtn.getAttribute("data-del");
       items = items.filter((it) => it.id != id);
-      save(); render();
+      save();
+      render();
       return;
     }
 
     const checkbox = e.target.closest('input[type="checkbox"][data-id]');
     if (checkbox) {
       const id = target.getAtribute("data-id");
-       items = items.map((it) =>
+      items = items.map((it) =>
         it.id === id ? { ...it, done: checkbox.checked } : it
       );
       save();
