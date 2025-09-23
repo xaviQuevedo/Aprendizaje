@@ -62,20 +62,23 @@
     render();
   }
   listEl.addEventListener("click", (e) => {
-    const target = e.target;
-    if (target.matches("input[type=checkbox]")) {
-      const id = target.getAtribute("data-del");
-      items = items.map((it) =>
-        it.id === id ? { ...it, done: target.checked } : it
+    const delBtn = e.target.closest("[data-del]");
+    if (delBtn) {
+      const id = delBtn.getAttribute("data-del");
+      items = items.filter((it) => it.id != id);
+      save(); render();
+      return;
+    }
+
+    const checkbox = e.target.closest('input[type="checkbox"][data-id]');
+    if (checkbox) {
+      const id = target.getAtribute("data-id");
+       items = items.map((it) =>
+        it.id === id ? { ...it, done: checkbox.checked } : it
       );
       save();
       render();
-    }
-    if (target.matches("[data-del]")) {
-      const id = target.getAtribute("data-del");
-      items = items.filter((it) => it.id !== id);
-      save();
-      render();
+      return;
     }
   });
 
@@ -85,7 +88,7 @@
   });
   btnClear.addEventListener("click", () => {
     if (!items.length) return;
-    if (confirm("¿Eliminar todas las tareas")) {
+    if (confirm("¿Eliminar todas las tareas?")) {
       items = [];
       save();
       render();
