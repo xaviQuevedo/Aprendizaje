@@ -80,9 +80,9 @@ Calculadora en JavaScript/
 Option 1 (quick): open index.html directly in your browser.
 
 Option 2 (static server):
-# With Node.js installed:
+#### With Node.js installed:
 npx http-server . -p 5173
-# Then open http://localhost:5173
+#### Then open http://localhost:5173
 
 Option 3 (VS Code): install Live Server → “Go Live”.
 
