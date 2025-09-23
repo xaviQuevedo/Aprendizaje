@@ -1,71 +1,43 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, inicial-scale=1" />
-    <title>Calculadora JS</title>
-    <link rel="stylesheet" href="./styles.css" />
-  </head>
-  <body>
-    <main class="calc" role="application" aria-label="Calculadora">
-      <div class="header">
-        <div>
-          <div class="title">Calculadora</div>
-          <div class="hint" aria-hidden="true">Soporta teclado</div>
-        </div>
-        </div>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+  <title>Calculadora en JS</title>
+  <link href="styles.css" rel="stylesheet"/>
+  <!-- Asegúrate de que script.js está en la MISMA carpeta -->
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="calculator-grid">
+    <div class="output">
+      <div data-previous-operand class="previous-operand"></div>
+      <div data-current-operand class="current-operand"></div>
+    </div>
 
-        <div class="screen" aria-live="polite" aria-atomic="true">
-          <div class="expr" id="expr"></div>
-          <div class="value" id="display">0</div>
-        </div>
+    <button data-all-clear class="span-two">AC</button>
+    <button data-delete>DEL</button>
+    <button data-operation="÷">÷</button>
 
-        <div class="keys" id="keys">
-          <button
-            class="key util"
-            data-action="all-clear"
-          >
-            AC
-          </button>
-          <button
-            class="key util"
-            data-action="clear-entry"
-          >
-            C
-          </button>
-          <button
-            class="key util"
-            data-action="toggle-sign"
-          >
-            ±
-          </button>
-          <button class="key op" data-op="/" aria-label="Dividir">÷</button>
+    <button data-number="1">1</button>
+    <button data-number="2">2</button>
+    <button data-number="3">3</button>
+    <button data-operation="*">*</button>
 
-          <button class="key" data-digit="7">7</button>
-          <button class="key" data-digit="8">8</button>
-          <button class="key" data-digit="9">9</button>
-          <button class="key op" data-op="*" aria-label="Multiplicar">*</button>
+    <button data-number="4">4</button>
+    <button data-number="5">5</button>
+    <button data-number="6">6</button>
+    <button data-operation="+">+</button>
 
-          <button class="key" data-digit="4">4</button>
-          <button class="key" data-digit="5">5</button>
-          <button class="key" data-digit="6">6</button>
-          <button class="key op" data-op="-" aria-label="Restar">-</button>
+    <button data-number="7">7</button>
+    <button data-number="8">8</button>
+    <button data-number="9">9</button>
+    <button data-operation="-">-</button>
 
-          <button class="key" data-digit="1">1</button>
-          <button class="key" data-digit="2">2</button>
-          <button class="key" data-digit="3">3</button>
-          <button class="key op" data-op="+" aria-label="Sumar">+</button>
-
-          <button class="key wide" data-digit="0">0</button>
-          <button class="key" data-action="decimal">.</button>
-          <button class="key eq" data-action="equals" aria-label="Igual">=</button>
-        </div>
-
-        <div class="footer">
-            <span>Atajos: <span class="kbd">0–9</span>, <span class="kbd">+ - * /</span>, <span class="kbd">.</span>, <span class="kbd">Enter</span>, <span class="kbd">Backspace</span>, <span class="kbd">Escape</span></span>
-            <span>Arquitectura por capas</span>
-        </div>
-    </main>
-    <script type="module" src="./src/ui/app.js"></script>    
-  </body>
+    <button data-number=".">.</button>
+    <button data-number="0">0</button>
+    <button data-equals class="span-two">=</button>
+  </div>
+</body>
 </html>
