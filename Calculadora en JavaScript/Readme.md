@@ -32,19 +32,19 @@ npx http-server . -p 5173
 # Luego visita http://localhost:5173
 Opción 3 (VS Code): instala la extensión Live Server → “Go Live”.
 
-🧩 Personalización
+### 🧩 Personalización
 
 Cambia colores y tamaños en styles.css.
 
 Ajusta comportamiento (por ejemplo, formato de números) en script.js.
 
-🖼️ Demo y capturas
+### 🖼️ Demo y capturas
 
 Demo en vivo: (pendiente)
 
 Capturas: añade imágenes en una carpeta assets/ (opcional) y enlázalas aquí.
 
-🗺️ Roadmap (ideas)
+### 🗺️ Roadmap (ideas)
 
  Añadir tecla % (porcentaje).
 
@@ -54,17 +54,17 @@ Capturas: añade imágenes en una carpeta assets/ (opcional) y enlázalas aquí.
 
  Modo oscuro/claro con prefers-color-scheme.
 
-🙌 Créditos
+### 🙌 Créditos
 
 Estructura y idea basadas en Web Dev Simplified – Vanilla JavaScript Calculator.
 
-📄 Licencia
+### 📄 Licencia
 
 MIT — libre de uso con atribución.
 
 
-🇬🇧 English
-✨ Features
+## 🇬🇧 English
+### ✨ Features
 
 Basic operations: addition, subtraction, multiplication, division.
 
@@ -76,7 +76,7 @@ Simple styling and basic responsive layout.
 
 Note: This is intentionally minimal to focus on calculator logic.
 
-🗂 Project structure
+### 🗂 Project structure
 Calculadora en JavaScript/
 ├─ index.html     # Markup and buttons
 ├─ styles.css     # Calculator styles
@@ -93,19 +93,19 @@ npx http-server . -p 5173
 
 Option 3 (VS Code): install Live Server → “Go Live”.
 
-🧩 Customization
+### 🧩 Customization
 
 Tweak colors/sizing in styles.css.
 
 Adjust behavior (e.g., number formatting) in script.js.
 
-🖼️ Demo & screenshots
+### 🖼️ Demo & screenshots
 
 Live Demo: TBD
 
 Screenshots: add images under assets/ (optional) and link them here.
 
-🗺️ Roadmap (ideas)
+### 🗺️ Roadmap (ideas)
 
  Add % (percent) button.
 
@@ -115,7 +115,7 @@ Screenshots: add images under assets/ (optional) and link them here.
 
  Dark/Light theme via prefers-color-scheme.
 
-🙌 Credits
+### 🙌 Credits
 
 Structure and idea based on Web Dev Simplified – Vanilla JavaScript Calculator.
 
