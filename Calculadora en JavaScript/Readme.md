@@ -25,13 +25,6 @@ Calculadora en JavaScript/
 ### 🚀 Cómo ejecutar
 **Opción 1 (rápida):** abre `index.html` directamente en tu navegador.
 
-**Opción 2 (servidor estático):**
-```bash
-# Con Node.js instalado:
-npx http-server . -p 5173
-# Luego visita http://localhost:5173
-Opción 3 (VS Code): instala la extensión Live Server → “Go Live”.
-
 ### 🧩 Personalización
 
 Cambia colores y tamaños en styles.css.
