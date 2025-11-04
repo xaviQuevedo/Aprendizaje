@@ -1,2 +1,2 @@
-import { initController } from "./todoController";
+import { initController } from "./todoController.js";
 initController();
