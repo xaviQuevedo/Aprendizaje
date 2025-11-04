@@ -1,0 +1,11 @@
+# Dependencias
+node_modules/
+
+# Archivos generados
+public/output.css
+
+# Archivos de entorno
+.env
+
+# Logs
+npm-debug.log*

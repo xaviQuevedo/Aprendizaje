@@ -20,8 +20,10 @@ export function renderList(rootUl, items) {
 /** Renderiza contador */
 export function renderStats(statsEl, items) {
     const pending = items.filter(i => !i.done).length;
-    el.textContent = `${pending} pendiente${pending !== 1 ? "s": ""}`;
+    // Asegúrate de que `statsEl` esté pasando correctamente como el elemento DOM donde se muestra el contador
+    statsEl.textContent = `${pending} pendiente${pending !== 1 ? "s" : ""}`;
 }
+
 /** Marca el boton de filtro activo */
 export function setActiveFilter(container, mode) {
     [...container.querySelectorAll("[data-filter]")].forEach(btn => {

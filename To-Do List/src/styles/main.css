@@ -1,4 +1,4 @@
-:root {
+/* :root {
   --bg: #0ea5e9;
   --card: #fff;
   --muted: #94a3b8;
@@ -85,8 +85,26 @@ li.done .txt {
 }
 
 
-/* Oculta visualmente pero accesible para lectores de pantalla */
+/* Oculta visualmente pero accesible para lectores de pantalla 
 .sr-only {
   position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
   overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
 }
+ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body { @apply bg-gradient-to-r from-primary to-secondary min-h-screen flex items-center justify-center; }
+.wrap { @apply bg-white shadow-xl rounded-2xl p-8 w-full max-w-md; }
+h1 { @apply text-xl font-semibold mb-4 text-gray-800; }
+.row { @apply flex gap-2 mb-4; }
+input[type="text"] { @apply flex-1 border border-gray-200 rounded-lg px-3 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-primary; }
+button.add { @apply bg-primary text-white px-4 py-2 rounded-lg hover:bg-blue-500 transition; }
+button.clear { @apply bg-gray-200 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-300 transition; }
+nav button { @apply bg-gray-100 text-gray-800 px-3 py-1 rounded-lg text-sm hover:bg-primary hover:text-white transition; }
+li { @apply flex items-center justify-between border border-gray-200 rounded-lg px-3 py-2 mb-2; }
+li.done .txt { @apply line-through text-gray-400; }
+.txt { @apply flex-1; }
+.small { @apply text-sm text-gray-500; }

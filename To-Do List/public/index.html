@@ -4,13 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>To-Do (LocalStorage)</title>
-    <link href="../src/styles/main.css" rel="stylesheet" />
+    <link href="../public/output.css" rel="stylesheet" />
+
     <script type="module" src="../src/js/main.js" defer></script>
   </head>
   <body>
     <div class="wrap">
+      <h1 class="text-4xl font-bold text-center text-primary">To-Do List (LocalStorage)</h1>
 
-      <h1>To-DO (LocalStorage)</h1>
 
       <form id="formNew" class="row" aria-label="Crear nueva tarea">
         <label class="sr-only" for="newTask">Nueva tares</label>
@@ -27,11 +28,11 @@
       <nav class="row" aria-label="Filtros">
         <button data-filter="all" aria-pressed="true">Todas</button>
         <button data-filter="active">Activas</button>
-        <button data-filter="completed"> Completadas </button>        
+        <button data-filter="completed">Completadas</button>
       </nav>
 
       <ul id="list" role="list" aria-live="polite"></ul>
       <div class="small"><span id="stats">0 pendientes</span></div>
-    </div>    
+    </div>
   </body>
 </html>
