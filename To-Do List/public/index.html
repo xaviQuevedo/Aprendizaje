@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-Do (LocalStorage)</title>
+    <link href="../src/styles/main.css" rel="stylesheet" />
+    <script type="module" src="../src/js/main.js" defer></script>
+  </head>
+  <body>
+    <div class="wrap">
+
+      <h1>To-DO</h1>
+
+      <form id="formNew" class="row" aria-label="Crear nueva tarea">
+        <label class="sr-only" for="newTask">Nueva tares</label>
+        <input
+          id="newTask"
+          type="text"
+          placeholder="Escribe una tarea y Enter...."
+          autocomplete="off"
+        />
+        <button type="submit" class"add" id="btnAdd">Añadir</button>
+        <button type="button" class="clear" id="btnClear">Limpiar</button>
+      </form>
+
+      <nav class="row" aria-label="Filtros">
+        <button data-filter="all" aria-pressed="true">Todas</button>
+        <button data-filter="active">Activas</button>
+        <button data-filter="completed"> Completadas </button>        
+      </nav>
+
+      <ul id="list" role="list" aria-live="polite"></ul>
+      <div class="small"><span id="stats">0 pendientes</span></div>
+    </div>    
+  </body>
+</html>
