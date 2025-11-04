@@ -1,4 +1,4 @@
-(function () {
+/* (function () {
   const $ = (s) => document.querySelector(s);
   const listEl = $("#list");
   const inputEl = $("#newTask");
@@ -7,7 +7,7 @@
   const statsEl = $("#stats");
   const KEY = "todo.items.V1";
 
-  /** @type {{id:string,text:string,done:boolean}[]} */
+  /** @type {{id:string,text:string,done:boolean}[]} 
   let items = load();
 
   function uid() {
@@ -98,3 +98,4 @@
 
   render();
 })();
+ */
