@@ -1,0 +1,17 @@
+# 1️⃣ Crea y cambia a una nueva rama
+git checkout -b chore/estructura-modular
+
+# 2️⃣ Añade todos los cambios (nuevos + modificados + eliminados)
+git add .
+
+# 3️⃣ Crea el commit con un mensaje claro
+git commit -m "Reestructura proyecto: modularización, documentación y configuración base"
+
+# 4️⃣ Sube la rama nueva a tu repo remoto
+git push origin chore/estructura-modular
+
+
+git checkout main
+git pull
+git branch -d chore/estructura-modular
+git push origin --delete chore/estructura-modular
