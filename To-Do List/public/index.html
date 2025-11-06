@@ -10,8 +10,16 @@
   </head>
   <body>
     <div class="wrap">
-      <h1 class="text-4xl font-bold text-center text-primary">To-Do List (LocalStorage)</h1>
+      <h1 class="text-xl font-semibold">To-Do List (LocalStorage)</h1>
 
+      <button
+        id="btnDark"
+        class="clear px-3 py-1 text-sm"
+        aria-pressed="false"
+        title="Alternar modo oscuro"
+      >
+        🌙 Dark
+      </button>
 
       <form id="formNew" class="row" aria-label="Crear nueva tarea">
         <label class="sr-only" for="newTask">Nueva tarea</label>
@@ -24,7 +32,6 @@
         <button type="submit" class="add" id="btnAdd">Añadir</button>
         <button type="button" class="clear" id="btnClear">Limpiar</button>
         <button id="btnClearDone" class="clear mt-2">Borrar completadas</button>
-
       </form>
 
       <nav class="row" aria-label="Filtros">

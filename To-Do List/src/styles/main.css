@@ -96,15 +96,48 @@ li.done .txt {
 @tailwind components;
 @tailwind utilities;
 
-body { @apply bg-gradient-to-r from-primary to-secondary min-h-screen flex items-center justify-center; }
-.wrap { @apply bg-white shadow-xl rounded-2xl p-8 w-full max-w-md; }
-h1 { @apply text-xl font-semibold mb-4 text-gray-800; }
-.row { @apply flex gap-2 mb-4; }
-input[type="text"] { @apply flex-1 border border-gray-200 rounded-lg px-3 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-primary; }
-button.add { @apply bg-primary text-white px-4 py-2 rounded-lg hover:bg-blue-500 transition; }
-button.clear { @apply bg-gray-200 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-300 transition; }
-nav button { @apply bg-gray-100 text-gray-800 px-3 py-1 rounded-lg text-sm hover:bg-primary hover:text-white transition; }
-li { @apply flex items-center justify-between border border-gray-200 rounded-lg px-3 py-2 mb-2; }
-li.done .txt { @apply line-through text-gray-400; }
-.txt { @apply flex-1; }
-.small { @apply text-sm text-gray-500; }
+/* Layout general */
+body {
+  @apply min-h-screen flex items-center justify-center bg-gradient-to-r from-primary to-secondary dark:from-slate-800 dark:to-slate-900;
+}
+
+.wrap {
+  @apply w-full max-w-md bg-white dark:bg-slate-800 dark:text-slate-100 shadow-xl rounded-2xl p-8;
+}
+
+h1 {
+  @apply text-xl font-semibold mb-4 text-gray-800 dark:text-slate-100;
+}
+
+.row {
+  @apply flex gap-2 mb-4;
+}
+
+input[type="text"] {
+  @apply flex-1 border border-gray-200 dark:border-slate-600 bg-white dark:bg-slate-700 text-gray-700 dark:text-slate-100 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary;
+}
+
+button.add {
+  @apply bg-primary text-white px-4 py-2 rounded-lg hover:bg-blue-500 transition;
+}
+button.clear {
+  @apply bg-gray-200 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-300 transition dark:bg-slate-700 dark:text-slate-100 dark:hover:bg-slate-600;
+}
+
+nav button {
+  @apply bg-gray-100 dark:bg-slate-700 text-gray-800 dark:text-slate-100 px-3 py-1 rounded-lg text-sm hover:bg-primary hover:text-white transition;
+}
+
+li {
+  @apply flex items-center justify-between border border-gray-200 dark:border-slate-600 rounded-lg px-3 py-2 mb-2 bg-white dark:bg-slate-700;
+}
+li.done .txt {
+  @apply line-through text-gray-400;
+}
+
+.txt {
+  @apply flex-1;
+}
+.small {
+  @apply text-sm text-gray-500 dark:text-slate-400;
+}
