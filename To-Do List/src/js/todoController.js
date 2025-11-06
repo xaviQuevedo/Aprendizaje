@@ -1,5 +1,5 @@
 // src/js/todoController.js
-import { load, save } from "./store.js";
+import { load, save, loadFilter, saveFilter } from "./store.js";
 import { add, toggle, remove, clear, filter, rename } from "./todoModel.js";
 import { renderList, renderStats, setActiveFilter } from "./todoView.js";
 
@@ -25,7 +25,7 @@ export function initController(doc = document) {
  */
   /** @type {import("./store.js").Todo[]} */
   let items = load();
-  let mode = "all"; // "all" | "active" | "completed"
+  let mode = loadFilter(); // "all" | "active" | "completed"
 
   const redraw = () => {
     renderList(listEl, filter(items, mode));
@@ -41,7 +41,7 @@ export function initController(doc = document) {
 
     const id = txt.getAttribute("data-edit");
     const original = txt.textContent || "";
-    
+
     const input = document.createElement("input");
     input.type = "text";
     input.value = original;
@@ -120,6 +120,7 @@ export function initController(doc = document) {
     const btn = e.target.closest("[data-filter]");
     if (!btn) return;
     mode = btn.dataset.filter || "all";
+    saveFilter(mode);
     redraw();
   });
 
