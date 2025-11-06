@@ -1,6 +1,7 @@
 /** @typedef {import("./store.js").Todo} Todo */
 
-export const uid = () => crypto.randomUUID?.() || Math.random().toString(36).slice(2, 9);
+export const uid = () => 
+    (crypto.randomUUID?.() || Math.random().toString(36).slice(2, 9));
 
 /** Crea una tarea nueva al principio. */
 export function add(items, text) {
@@ -23,7 +24,11 @@ export const clear = () => [];
 
 /** Filtra por vista */
 export function filter(items, mode = "all") {
-    if (mode === "active") return items-filter(t => !t.done);
+    if (mode === "active") return items.filter(t => !t.done);
     if (mode === "completed") return items.filter(t => t.done);
     return items;
+}
+
+export function rename(items, id, newText) {
+    return items.map(t => (t.id === id ? { ...t, text: newText } : t));
 }
