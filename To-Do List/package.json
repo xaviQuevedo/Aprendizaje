@@ -4,7 +4,7 @@
   "description": "Pequeña app To-Do modular en ES Modules, con persistencia en `localStorage` y filtros.",
   "main": "script.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "vitest",
     "dev": "tailwindcss -i ./src/styles/main.css -o ./public/output.css --watch"
   },
   "keywords": [],
@@ -13,6 +13,7 @@
   "devDependencies": {
     "autoprefixer": "^10.4.21",
     "postcss": "^8.5.6",
-    "tailwindcss": "^3.4.0"
+    "tailwindcss": "^3.4.0",
+    "vitest": "^4.0.8"
   }
 }
