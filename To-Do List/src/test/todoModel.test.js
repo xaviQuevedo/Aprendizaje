@@ -78,4 +78,16 @@ describe("todoModel", () => {
     expect(filter(base, "active").length).toBe(1);
     expect(filter(base, "all").length).toBe(2);
   });
+  
+  it("does not mutate the original task when toggling / no muta la tarea original al marcar", () => {
+    const base = add([], "Practicar JS");
+    const id = base[0].id;
+
+    const toggled = toggle(base, id, true);
+
+    expect(base[0].done).toBe(false);
+    expect(toggled[0].done).toBe(true);
+    expect(toggled).not.toBe(base);
+  });
+
 });

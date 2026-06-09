@@ -1,0 +1,34 @@
+Estructura general de un test, patron:
+    1. Arrange (Preparar)
+    2. Act (Actuar)
+    3. Assert (Verificar)
+
+1. Arrange
+    Se crean los datos necesarios.
+    Ejemplo :
+        const items = []; //La lista de tareas empieza vacia
+
+2. Act 
+    Llamamos a la función que queremos probar.
+    Ejemplo:
+        const updated = add(items, "Aprender testing / Learning testing");
+    Secuencia:
+        items -> add() -> updated
+    Resultado que se espera:
+        [
+            {
+                id: "...",
+                text: "Aprender testing / Learn testing",
+                done: false,
+                createdAt: 123456
+            }
+        ]
+
+3. Assert
+    Se comprueba que el resultado sea correcto
+    Primera comprobación:
+        expect(updated.length).toBe(1);
+
+Ejecución de test:
+
+npm test -- src/test/todoView.test.js
