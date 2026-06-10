@@ -1,23 +1,32 @@
-import { initController } from "./todoController.js";
+import { initController } from "./todoController";
 
 const THEME_KEY = "todo.theme";
+type Theme = "dark" | "light";
 
-function applyTheme(theme) {
+function applyTheme(theme: Theme): void {
   const root = document.documentElement;
   const isDark = theme === "dark";
+
   root.classList.toggle("dark", isDark);
+
   const btn = document.getElementById("btnDark");
-  if (btn) btn.setAttribute("aria-pressed", String(isDark));
+  if (btn) {
+    btn.setAttribute("aria-pressed", String(isDark));
+  }
 }
 
 function detectPreferredTheme() {
   const saved = localStorage.getItem(THEME_KEY);
-  if (saved === "dark" || saved === "light") return saved;
+  if (saved === "dark" || saved === "light") {
+    return saved;
+  }
   // si no hay preferencia guardada, mira al sistema
-  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  return window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? "dark"
+    : "light";
 }
 
-function initThemeToggle() {
+function initThemeToggle(): void {
   const current = detectPreferredTheme();
   applyTheme(current);
 
@@ -25,7 +34,10 @@ function initThemeToggle() {
   if (!btn) return;
 
   btn.addEventListener("click", () => {
-    const now = document.documentElement.classList.contains("dark") ? "dark" : "light";
+    const now: Theme = document.documentElement.classList.contains("dark")
+      ? "dark"
+      : "light";
+      
     const next = now === "dark" ? "light" : "dark";
     localStorage.setItem(THEME_KEY, next);
     applyTheme(next);
