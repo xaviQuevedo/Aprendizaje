@@ -15,3 +15,6 @@ git checkout main
 git pull
 git branch -d chore/estructura-modular
 git push origin --delete chore/estructura-modular
+
+
+git config --global user.email "correo_electronico"
