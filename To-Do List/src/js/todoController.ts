@@ -1,18 +1,19 @@
 // src/js/todoController.js
-import { load, save, loadFilter, saveFilter } from "./store.js";
-import { add, toggle, remove, clear, filter, rename } from "./todoModel.js";
-import { renderList, renderStats, setActiveFilter } from "./todoView.js";
+import { load, save, loadFilter, saveFilter } from "./store";
+import type { FilterMode } from "./store";
+import { add, toggle, remove, clear, filter, rename } from "./todoModel";
+import { renderList, renderStats, setActiveFilter } from "./todoView";
 
 /** Controla eventos y estado global. */
-export function initController(doc = document) {
-  const $ = (s) => doc.querySelector(s);
+export function initController(doc: Document = document) {
+  const $ = (s: string): Element | null => doc.querySelector(s);
 
-  const listEl = $("#list");
-  const inputEl = $("#newTask");
-  const btnClear = $("#btnClear");
-  const statsEl = $("#stats");
-  const formNew = $("#formNew");
-  const filtersNav = doc.querySelector('nav[aria-label="Filtros"]');
+  const listEl = $("#list") as HTMLUListElement | null;
+  const inputEl = $("#newTask") as HTMLInputElement | null;
+  const btnClear = $("#btnClear") as HTMLButtonElement | null;
+  const statsEl = $("#stats") as HTMLElement | null;
+  const formNew = $("#formNew") as HTMLFormElement | null;
+  const filtersNav = doc.querySelector('nav[aria-label="Filtros"]') as HTMLElement | null;
 
   // Comprobaciones defensivas (mira la consola si algo es null)
   if (!listEl || !inputEl || !statsEl || !formNew) {
@@ -23,23 +24,29 @@ export function initController(doc = document) {
     console.warn("No se encontró el nav de filtros; los filtros no estarán activos.");
   }
  */
-  /** @type {import("./store.js").Todo[]} */
   let items = load();
-  let mode = loadFilter(); // "all" | "active" | "completed"
+  let mode: FilterMode = loadFilter(); // "all" | "active" | "completed"
 
-  const redraw = () => {
+  const redraw = (): void => {
     renderList(listEl, filter(items, mode));
     renderStats(statsEl, items);
-    if (filtersNav) setActiveFilter(filtersNav, mode);
+
+    if (filtersNav) {
+      setActiveFilter(filtersNav, mode);
+    }
   };
 
   console.log(" Controller inicializado");
 
-  listEl.addEventListener("dblclick", (e) => {
-    const txt = e.target.closest(".txt[data-edit]");
+  listEl.addEventListener("dblclick", (e: MouseEvent) => {
+    const target = e.target as HTMLElement | null;
+    const txt = target?.closest(".txt[data-edit]") as HTMLElement | null;
+
     if (!txt) return;
 
     const id = txt.getAttribute("data-edit");
+    if (!id) return;
+
     const original = txt.textContent || "";
 
     const input = document.createElement("input");
@@ -51,7 +58,7 @@ export function initController(doc = document) {
     input.focus();
     input.setSelectionRange(original.length, original.length);
 
-    const commit = () => {
+    const commit = (): void => {
       const val = input.value.trim();
       const newText = val || original;
       items = rename(items, id, newText);
@@ -59,9 +66,9 @@ export function initController(doc = document) {
       redraw();
     };
 
-    const cancel = () => redraw();
+    const cancel = (): void => redraw();
 
-    input.addEventListener("keydown", (ev) => {
+    input.addEventListener("keydown", (ev: KeyboardEvent) => {
       if (ev.key === "Enter") commit();
       if (ev.key === "Escape") cancel();
     });
@@ -69,23 +76,30 @@ export function initController(doc = document) {
   });
 
   // Añadir
-  formNew.addEventListener("submit", (e) => {
+  formNew.addEventListener("submit", (e: SubmitEvent) => {
     e.preventDefault();
+
     const text = inputEl.value.trim();
     if (!text) return;
+
     items = add(items, text);
     inputEl.value = "";
+
     save(items);
     redraw();
     inputEl.focus();
   });
 
   // Borrar / Toggle
-  listEl.addEventListener("click", (e) => {
+  listEl.addEventListener("click", (e: MouseEvent) => {
+    const target = e.target as HTMLElement | null;
     // Borrar
-    const delBtn = e.target.closest("[data-del]");
+    const delBtn = target?.closest("[data-del]") as HTMLElement | null;
+
     if (delBtn) {
       const id = delBtn.getAttribute("data-del");
+      if (!id) return;
+
       items = remove(items, id);
       save(items);
       redraw();
@@ -93,9 +107,12 @@ export function initController(doc = document) {
     }
 
     // Toggle (fíjate en [data-id], no [data-toggle])
-    const checkbox = e.target.closest('input[type="checkbox"][data-id]');
+    const checkbox = target?.closest('input[type="checkbox"][data-id]') as HTMLInputElement | null;
+
     if (checkbox) {
       const id = checkbox.getAttribute("data-id");
+      if (!id) return;
+
       items = toggle(items, id, checkbox.checked);
       save(items);
       redraw();
@@ -116,12 +133,24 @@ export function initController(doc = document) {
   }
 
   // Filtros
-  filtersNav?.addEventListener("click", (e) => {
-    const btn = e.target.closest("[data-filter]");
+  filtersNav?.addEventListener("click", (e: MouseEvent) => {
+    const target = e.target as HTMLElement | null;
+    const btn = target?.closest("[data-filter]") as HTMLElement | null;
+
     if (!btn) return;
-    mode = btn.dataset.filter || "all";
-    saveFilter(mode);
-    redraw();
+
+    const selectedMode = btn.dataset.filter;
+
+
+    if (
+      selectedMode === "all" ||
+      selectedMode === "active" ||
+      selectedMode === "completed"
+    ) {
+      mode = selectedMode;
+      saveFilter(mode);
+      redraw();
+    }
   });
 
   redraw();
